@@ -26,8 +26,8 @@ export default function About() {
     ];
 
     return (
-        <section id="how-it-works" className="py-16 md:py-24 bg-white">
-            <div className="container mx-auto px-4">
+        <section id="how-it-works" className="pt-64 md:pt-80 pb-16 md:pb-24 bg-white w-full">
+            <div className="w-full px-4 sm:px-6 lg:px-8">
                 {/* Section Title */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">How it works</h2>

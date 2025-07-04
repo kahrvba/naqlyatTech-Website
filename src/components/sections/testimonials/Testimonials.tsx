@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function AppShowcase() {
     return (
-        <section id="app-showcase" className="py-16 md:py-24 bg-gray">
-            <div className="container mx-auto px-4">
+        <section id="app-showcase" className="py-16 md:py-24 bg-gray w-full">
+            <div className="w-full px-4 sm:px-6 lg:px-8">
                 {/* Section Title */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Lorem Ipsum</h2>
@@ -42,30 +42,102 @@ export default function AppShowcase() {
                     </div>
                 </div>
 
-                {/* Phone Showcase */}
-                <div className="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-4 lg:space-x-8">
-                    {/* Left Phone */}
-                    <div className="w-full md:w-1/4 max-w-[180px]">
-                        <div className="bg-white p-4 rounded-lg">
-                            <h4 className="text-black font-semibold mb-3 text-center">Lorem Ipsum Lorem</h4>
-                            <div className="bg-black rounded-3xl overflow-hidden w-full aspect-[9/19] mb-3"></div>
-                            <p className="text-gray text-xs text-center">Lorem ipsum dolor sit amet consectetur</p>
+                {/* iPhone Showcase */}
+                <div className="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-8 lg:space-x-12 max-w-none">
+                    {/* Left iPhone */}
+                    <div className="w-full md:w-1/4 max-w-[220px]">
+                        <div className="bg-white p-6 rounded-2xl shadow-xl">
+                            <h4 className="text-black font-semibold mb-4 text-center">Lorem Ipsum Lorem</h4>
+                            {/* iPhone Frame */}
+                            <div className="bg-black rounded-[2.5rem] p-2 shadow-lg">
+                                {/* iPhone Screen */}
+                                <div className="bg-white rounded-[2rem] overflow-hidden aspect-[9/19] relative">
+                                    {/* Status Bar */}
+                                    <div className="bg-black h-6 flex items-center justify-between px-3">
+                                        <div className="text-white text-xs">9:41</div>
+                                        <div className="flex items-center space-x-1">
+                                            <div className="w-3 h-1 bg-white rounded-sm"></div>
+                                            <div className="w-3 h-1 bg-white rounded-sm"></div>
+                                            <div className="w-3 h-1 bg-white rounded-sm"></div>
+                                        </div>
+                                    </div>
+                                    {/* Screen Content */}
+                                    <div className="flex-1 bg-gradient-to-br from-light-orange to-orange p-3 flex items-center justify-center">
+                                        <div className="text-white text-center">
+                                            <div className="text-xl mb-2">📊</div>
+                                            <div className="text-xs font-medium">Dashboard</div>
+                                        </div>
+                                    </div>
+                                    {/* Home Indicator */}
+                                    <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-20 h-0.5 bg-black rounded-full opacity-30"></div>
+                                </div>
+                            </div>
+                            <p className="text-gray text-xs text-center mt-4">Lorem ipsum dolor sit amet consectetur</p>
                         </div>
                     </div>
 
-                    {/* Center Phone - Larger */}
-                    <div className="w-full md:w-1/3 max-w-[240px]">
-                        <div className="bg-black rounded-3xl overflow-hidden w-full aspect-[9/19] mb-3"></div>
-                        <h4 className="text-white font-semibold mb-1 text-center">Lorem Ipsum Lorem</h4>
+                    {/* Center iPhone - Larger */}
+                    <div className="w-full md:w-1/3 max-w-[280px]">
+                        <div className="relative">
+                            {/* iPhone Frame */}
+                            <div className="bg-black rounded-[3rem] p-2 shadow-2xl">
+                                {/* iPhone Screen */}
+                                <div className="bg-white rounded-[2.5rem] overflow-hidden aspect-[9/19] relative">
+                                    {/* Status Bar */}
+                                    <div className="bg-black h-10 flex items-center justify-between px-6">
+                                        <div className="text-white text-sm">9:41</div>
+                                        <div className="flex items-center space-x-1">
+                                            <div className="w-5 h-2 bg-white rounded-sm"></div>
+                                            <div className="w-5 h-2 bg-white rounded-sm"></div>
+                                            <div className="w-5 h-2 bg-white rounded-sm"></div>
+                                        </div>
+                                    </div>
+                                    {/* Screen Content */}
+                                    <div className="flex-1 bg-gradient-to-br from-orange to-text-orange p-6 flex items-center justify-center">
+                                        <div className="text-white text-center">
+                                            <div className="text-5xl mb-4">🚛</div>
+                                            <div className="text-xl font-bold mb-2">Main App</div>
+                                            <div className="text-sm opacity-90">Track & Manage</div>
+                                        </div>
+                                    </div>
+                                    {/* Home Indicator */}
+                                    <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-36 h-1 bg-black rounded-full opacity-30"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 className="text-white font-semibold mb-2 text-center mt-4">Lorem Ipsum Lorem</h4>
                         <p className="text-light-grey text-xs text-center">Lorem ipsum dolor sit amet consectetur</p>
                     </div>
 
-                    {/* Right Phone */}
-                    <div className="w-full md:w-1/4 max-w-[180px]">
-                        <div className="bg-white p-4 rounded-lg">
-                            <h4 className="text-black font-semibold mb-3 text-center">Lorem Ipsum Lorem</h4>
-                            <div className="bg-black rounded-3xl overflow-hidden w-full aspect-[9/19] mb-3"></div>
-                            <p className="text-gray text-xs text-center">Lorem ipsum dolor sit amet consectetur</p>
+                    {/* Right iPhone */}
+                    <div className="w-full md:w-1/4 max-w-[220px]">
+                        <div className="bg-white p-6 rounded-2xl shadow-xl">
+                            <h4 className="text-black font-semibold mb-4 text-center">Lorem Ipsum Lorem</h4>
+                            {/* iPhone Frame */}
+                            <div className="bg-black rounded-[2.5rem] p-2 shadow-lg">
+                                {/* iPhone Screen */}
+                                <div className="bg-white rounded-[2rem] overflow-hidden aspect-[9/19] relative">
+                                    {/* Status Bar */}
+                                    <div className="bg-black h-6 flex items-center justify-between px-3">
+                                        <div className="text-white text-xs">9:41</div>
+                                        <div className="flex items-center space-x-1">
+                                            <div className="w-3 h-1 bg-white rounded-sm"></div>
+                                            <div className="w-3 h-1 bg-white rounded-sm"></div>
+                                            <div className="w-3 h-1 bg-white rounded-sm"></div>
+                                        </div>
+                                    </div>
+                                    {/* Screen Content */}
+                                    <div className="flex-1 bg-gradient-to-br from-text-orange to-red p-3 flex items-center justify-center">
+                                        <div className="text-white text-center">
+                                            <div className="text-xl mb-2">⚙️</div>
+                                            <div className="text-xs font-medium">Settings</div>
+                                        </div>
+                                    </div>
+                                    {/* Home Indicator */}
+                                    <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-20 h-0.5 bg-black rounded-full opacity-30"></div>
+                                </div>
+                            </div>
+                            <p className="text-gray text-xs text-center mt-4">Lorem ipsum dolor sit amet consectetur</p>
                         </div>
                     </div>
                 </div>

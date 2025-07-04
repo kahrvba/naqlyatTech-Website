@@ -57,8 +57,8 @@ export default function Header() {
                         </nav>
 
                         <div>
-                            <button className="bg-orange text-white px-6 py-2 rounded text-sm font-medium hover:bg-opacity-90 transition-all">
-                                Get Started
+                            <button className="bg-orange text-white px-6 py-2 rounded-3xl text-sm font-medium hover:bg-opacity-90 transition-all">
+                                Download Now
                             </button>
                         </div>
 
