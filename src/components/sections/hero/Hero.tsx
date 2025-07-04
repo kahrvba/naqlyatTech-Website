@@ -5,7 +5,7 @@ import HeroContent from '../../ui/HeroContent';
 
 export default function Hero() {
     return (
-        <section id="home" className="relative w-full">
+        <section id="home" className="relative w-full mb-100">
             {/* Dark Background Section */}
             <div className="bg-gray pt-16 pb-32 w-full">
                 <div className="w-full px-4 sm:px-6 lg:px-8">
@@ -54,7 +54,7 @@ export default function Hero() {
                 </div>
 
                 {/* App Store Buttons */}
-                <div className="flex justify-center mt-12 space-x-6">
+                <div className="flex justify-center mt-10 space-x-4">
                     <AppStoreButton type="appstore" />
                     <AppStoreButton type="playstore" />
                 </div>
