@@ -1,8 +1,119 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Project colors */
+  --orange: #EE5316;
+  --white: #FFFFFF;
+  --text-orange: #F3703D;
+  --gray: #363636;
+  --black: #000000;
+  --light-orange: #EE531626;
+  --light-grey: #9B9B9B;
+  --light-red: #FDE7E7;
+  --red: #FD7676;
+  --secondary-black: #242424;
+  --dark-grey: #434343;
+
+  /* Default theme */
+  --background: var(--white);
+  --foreground: var(--black);
+}
+
+/* Utility classes that use the CSS variables */
+.bg-orange {
+  background-color: var(--orange);
+}
+
+.bg-white {
+  background-color: var(--white);
+}
+
+.bg-text-orange {
+  background-color: var(--text-orange);
+}
+
+.bg-gray {
+  background-color: var(--gray);
+}
+
+.bg-black {
+  background-color: var(--black);
+}
+
+.bg-light-orange {
+  background-color: var(--light-orange);
+}
+
+.bg-light-grey {
+  background-color: var(--light-grey);
+}
+
+.bg-light-red {
+  background-color: var(--light-red);
+}
+
+.bg-red {
+  background-color: var(--red);
+}
+
+.bg-secondary-black {
+  background-color: var(--secondary-black);
+}
+
+.bg-dark-grey {
+  background-color: var(--dark-grey);
+}
+
+.text-orange {
+  color: var(--orange);
+}
+
+.text-white {
+  color: var(--white);
+}
+
+.text-text-orange {
+  color: var(--text-orange);
+}
+
+.text-gray {
+  color: var(--gray);
+}
+
+.text-black {
+  color: var(--black);
+}
+
+.text-light-grey {
+  color: var(--light-grey);
+}
+
+.text-red {
+  color: var(--red);
+}
+
+.text-secondary-black {
+  color: var(--secondary-black);
+}
+
+.text-dark-grey {
+  color: var(--dark-grey);
+}
+
+.border-orange {
+  border-color: var(--orange);
+}
+
+.border-gray {
+  border-color: var(--gray);
+}
+
+.border-light-grey {
+  border-color: var(--light-grey);
+}
+
+.border-dark-grey {
+  border-color: var(--dark-grey);
 }
 
 @theme inline {
@@ -14,8 +125,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--black);
+    --foreground: var(--white);
   }
 }
 
