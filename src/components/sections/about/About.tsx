@@ -26,7 +26,7 @@ export default function About() {
         }
     ];
     return (
-        <section id="how-it-works" className="mt-10 md:pt-15 pb-16 md:pb-24 bg-white w-full">
+        <section id="how-it-works" className="mt-10 md:pt-50 pb-16 md:pb-24 bg-white w-full">
             <div className="w-full px-4 sm:px-6 lg:px-8">
                 {/* Section Title */}
                 <div className="text-center mb-16">
