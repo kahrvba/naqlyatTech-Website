@@ -40,7 +40,7 @@ export default function Features() {
                         <p className="text-gray text-sm leading-relaxed">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
-                        
+
                         {/* Feature Card under description */}
                         <div className="mt-8 bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow max-w-sm">
                             <div className="mb-4">
