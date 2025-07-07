@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function CTA() {
     return (
@@ -8,16 +9,16 @@ export default function CTA() {
                     <div className="p-8 md:p-12">
                         <div className="flex flex-col md:flex-row justify-between items-center">
                             {/* Text Content */}
-                            <div className="md:w-1/2 mb-8 md:mb-0">
-                                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                            <div className="md:w-1/2 mb-8 ">
+                                <h2 className="text-xl md:text-2xl font-bold text-white mb-4">
                                     Download Our Online Mobile App
                                 </h2>
-                                <p className="text-white mb-8 opacity-90 text-sm max-w-lg">
+                                <p className="text-white mb-8 opacity-90 text-xs max-w-lg">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
                                 </p>
 
                                 {/* Stats */}
-                                <div className="flex space-x-8 mb-6">
+                                <div className="flex space-x-5 mb-6">
                                     <div className="text-center">
                                         <p className="text-white font-bold text-3xl">5K+</p>
                                         <p className="text-white text-xs opacity-90">Downloads</p>
@@ -35,19 +36,20 @@ export default function CTA() {
 
                             {/* QR Codes */}
                             <div className="md:w-1/3 flex space-x-4">
-                                <div className="bg-white p-3 rounded-lg">
-                                    <div className="text-center">
-                                        <div className="bg-black w-32 h-32 mx-auto mb-2"></div>
-                                        <p className="text-gray text-xs font-medium">For iOS</p>
-                                    </div>
-                                </div>
-
-                                <div className="bg-white p-3 rounded-lg">
-                                    <div className="text-center">
-                                        <div className="bg-black w-32 h-32 mx-auto mb-2"></div>
-                                        <p className="text-gray text-xs font-medium">For Android</p>
-                                    </div>
-                                </div>
+                                <Image
+                                    src="/images/applecode.png"
+                                    alt="iOS App Store QR Code"
+                                    width={150}
+                                    height={150}
+                                    className=" w-full h-full object-fit"
+                                />
+                                <Image
+                                    src="/images/playcode.png"
+                                    alt="Android Play Store QR Code"
+                                    width={150}
+                                    height={150}
+                                    className=" w-full h-full mt-5 object-fit"
+                                />
                             </div>
                         </div>
                     </div>

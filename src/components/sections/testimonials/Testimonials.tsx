@@ -1,4 +1,5 @@
 import React from 'react';
+import IPhoneMockup from '../../ui/IPhoneMockup';
 
 export default function AppShowcase() {
     return (
@@ -48,96 +49,45 @@ export default function AppShowcase() {
                     <div className="w-full md:w-1/4 max-w-[220px]">
                         <div className="bg-white p-6 rounded-2xl shadow-xl">
                             <h4 className="text-black font-semibold mb-4 text-center">Lorem Ipsum Lorem</h4>
-                            {/* iPhone Frame */}
-                            <div className="bg-black rounded-[2.5rem] p-2 shadow-lg">
-                                {/* iPhone Screen */}
-                                <div className="bg-white rounded-[2rem] overflow-hidden aspect-[9/19] relative">
-                                    {/* Status Bar */}
-                                    <div className="bg-black h-6 flex items-center justify-between px-3">
-                                        <div className="text-white text-xs">9:41</div>
-                                        <div className="flex items-center space-x-1">
-                                            <div className="w-3 h-1 bg-white rounded-sm"></div>
-                                            <div className="w-3 h-1 bg-white rounded-sm"></div>
-                                            <div className="w-3 h-1 bg-white rounded-sm"></div>
-                                        </div>
-                                    </div>
-                                    {/* Screen Content */}
-                                    <div className="flex-1 bg-gradient-to-br from-light-orange to-orange p-3 flex items-center justify-center">
-                                        <div className="text-white text-center">
-                                            <div className="text-xl mb-2">📊</div>
-                                            <div className="text-xs font-medium">Dashboard</div>
-                                        </div>
-                                    </div>
-                                    {/* Home Indicator */}
-                                    <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-20 h-0.5 bg-black rounded-full opacity-30"></div>
-                                </div>
-                            </div>
-                            <p className="text-gray text-xs text-center mt-4">Lorem ipsum dolor sit amet consectetur</p>
+                            <IPhoneMockup
+                                size="small"
+                                icon="📊"
+                                title="Dashboard"
+                                gradientFrom="from-orange/20"
+                                gradientTo="to-orange"
+                            />
+                            <p className="text-gray text-xs text-center mt-4">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
                         </div>
                     </div>
 
                     {/* Center iPhone - Larger */}
                     <div className="w-full md:w-1/3 max-w-[280px]">
                         <div className="relative">
-                            {/* iPhone Frame */}
-                            <div className="bg-black rounded-[3rem] p-2 shadow-2xl">
-                                {/* iPhone Screen */}
-                                <div className="bg-white rounded-[2.5rem] overflow-hidden aspect-[9/19] relative">
-                                    {/* Status Bar */}
-                                    <div className="bg-black h-10 flex items-center justify-between px-6">
-                                        <div className="text-white text-sm">9:41</div>
-                                        <div className="flex items-center space-x-1">
-                                            <div className="w-5 h-2 bg-white rounded-sm"></div>
-                                            <div className="w-5 h-2 bg-white rounded-sm"></div>
-                                            <div className="w-5 h-2 bg-white rounded-sm"></div>
-                                        </div>
-                                    </div>
-                                    {/* Screen Content */}
-                                    <div className="flex-1 bg-gradient-to-br from-orange to-text-orange p-6 flex items-center justify-center">
-                                        <div className="text-white text-center">
-                                            <div className="text-5xl mb-4">🚛</div>
-                                            <div className="text-xl font-bold mb-2">Main App</div>
-                                            <div className="text-sm opacity-90">Track & Manage</div>
-                                        </div>
-                                    </div>
-                                    {/* Home Indicator */}
-                                    <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-36 h-1 bg-black rounded-full opacity-30"></div>
-                                </div>
-                            </div>
+                            <IPhoneMockup
+                                size="large"
+                                icon="🚛"
+                                title="Main App"
+                                subtitle="Track & Manage"
+                                gradientFrom="from-orange"
+                                gradientTo="to-text-orange"
+                            />
                         </div>
                         <h4 className="text-white font-semibold mb-2 text-center mt-4">Lorem Ipsum Lorem</h4>
-                        <p className="text-light-grey text-xs text-center">Lorem ipsum dolor sit amet consectetur</p>
+                        <p className="text-light-grey text-xs text-center">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
                     </div>
 
                     {/* Right iPhone */}
                     <div className="w-full md:w-1/4 max-w-[220px]">
                         <div className="bg-white p-6 rounded-2xl shadow-xl">
                             <h4 className="text-black font-semibold mb-4 text-center">Lorem Ipsum Lorem</h4>
-                            {/* iPhone Frame */}
-                            <div className="bg-black rounded-[2.5rem] p-2 shadow-lg">
-                                {/* iPhone Screen */}
-                                <div className="bg-white rounded-[2rem] overflow-hidden aspect-[9/19] relative">
-                                    {/* Status Bar */}
-                                    <div className="bg-black h-6 flex items-center justify-between px-3">
-                                        <div className="text-white text-xs">9:41</div>
-                                        <div className="flex items-center space-x-1">
-                                            <div className="w-3 h-1 bg-white rounded-sm"></div>
-                                            <div className="w-3 h-1 bg-white rounded-sm"></div>
-                                            <div className="w-3 h-1 bg-white rounded-sm"></div>
-                                        </div>
-                                    </div>
-                                    {/* Screen Content */}
-                                    <div className="flex-1 bg-gradient-to-br from-text-orange to-red p-3 flex items-center justify-center">
-                                        <div className="text-white text-center">
-                                            <div className="text-xl mb-2">⚙️</div>
-                                            <div className="text-xs font-medium">Settings</div>
-                                        </div>
-                                    </div>
-                                    {/* Home Indicator */}
-                                    <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-20 h-0.5 bg-black rounded-full opacity-30"></div>
-                                </div>
-                            </div>
-                            <p className="text-gray text-xs text-center mt-4">Lorem ipsum dolor sit amet consectetur</p>
+                            <IPhoneMockup
+                                size="small"
+                                icon="⚙️"
+                                title="Settings"
+                                gradientFrom="from-text-orange"
+                                gradientTo="to-red"
+                            />
+                            <p className="text-gray text-xs text-center mt-4">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
                         </div>
                     </div>
                 </div>
