@@ -11,14 +11,13 @@ export default function CTA() {
                             {/* Text Content */}
                             <div className="md:w-1/2 mb-8 ">
                                 <h2 className="text-xl md:text-2xl font-bold text-white mb-4">
-                                    Download Our Online Mobile App
+                                    Download Our Online<br />   Mobile App
                                 </h2>
-                                <p className="text-white mb-8 opacity-90 text-xs max-w-lg">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-                                </p>
+                                <p className="text-white mb-8 mr-20 opacity-90 text-xs max-w-lg">
+                                Loreum ipusum Loreum Loreum ipusum Loreum Loreum ipusum Loreum Loreum ipusum Loreum Loreum                                </p>
 
                                 {/* Stats */}
-                                <div className="flex space-x-5 mb-6">
+                                <div className="flex space-x-10 mb-5 mt-15">
                                     <div className="text-center">
                                         <p className="text-white font-bold text-3xl">5K+</p>
                                         <p className="text-white text-xs opacity-90">Downloads</p>
@@ -35,7 +34,7 @@ export default function CTA() {
                             </div>
 
                             {/* QR Codes */}
-                            <div className="md:w-1/3 flex space-x-4">
+                            <div className="md:w-1/2 flex space-x-4">
                                 <Image
                                     src="/images/applecode.png"
                                     alt="iOS App Store QR Code"
@@ -48,7 +47,7 @@ export default function CTA() {
                                     alt="Android Play Store QR Code"
                                     width={150}
                                     height={150}
-                                    className=" w-full h-full mt-5 object-fit"
+                                    className=" w-full h-full mt-10 object-fit"
                                 />
                             </div>
                         </div>
