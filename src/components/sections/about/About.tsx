@@ -1,82 +1,75 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import IPhoneMockup from '../../ui/IPhoneMockup';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { CenterPhone } from './components/CenterPhone';
+import { StepsGrid } from './components/StepsGrid';
+import { Step, Screen } from './types';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
     const sectionRef = useRef<HTMLElement>(null);
-    const phoneRef = useRef<HTMLDivElement>(null);
-    const stepsRefs = useRef<HTMLDivElement[]>([]);
+    const [currentStep, setCurrentStep] = useState(0);
 
-    const screens = [
+    const steps: Step[] = [
         {
-            image: '/images/applecode.png',
+            number: '1',
             title: 'Place Order',
-            subtitle: 'Select your delivery options'
+            description: 'Select your delivery options and place your order with our easy-to-use interface.',
+            image: '/images/step1.png'
         },
         {
-            image: '/images/applecode.png',
+            number: '2',
             title: 'Track Delivery',
-            subtitle: 'Real-time tracking'
+            description: 'Monitor your shipment in real-time with our advanced tracking system.',
+            image: '/images/step2.png'
         },
         {
-            image: '/images/applecode.png',
+            number: '3',
             title: 'Rate Service',
-            subtitle: 'Share your experience'
+            description: 'Share your experience and help us improve our service quality.',
+            image: '/images/step3.png'
         },
         {
-            image: '/images/applecode.png',
+            number: '4',
             title: 'View History',
-            subtitle: 'Check past deliveries'
+            description: 'Access your complete delivery history and manage your account.',
+            image: '/images/step4.png'
         }
     ];
 
-    // Add step to refs array
-    const addToRefs = (el: HTMLDivElement | null) => {
-        if (el && !stepsRefs.current.includes(el)) {
-            stepsRefs.current.push(el);
-        }
-    };
+    const screens: Screen[] = steps.map(step => ({
+        image: step.image,
+        title: step.title,
+        subtitle: step.description
+    }));
 
     useEffect(() => {
         const section = sectionRef.current;
-        const phone = phoneRef.current;
-        const steps = stepsRefs.current;
 
-        if (!section || !phone || steps.length === 0) return;
+        if (!section) return;
 
-        // Initial states
-        gsap.set(phone, { y: 100, opacity: 0 });
-        gsap.set(steps, { opacity: 0, y: 20 });
-
-        // Phone animation
-        gsap.to(phone, {
-            y: 0,
-            opacity: 1,
-            duration: 1,
+        // Pin the section and create scroll-triggered animations
+        gsap.timeline({
             scrollTrigger: {
                 trigger: section,
-                start: 'top center',
-                end: 'center center',
-                toggleActions: 'play none none reverse'
-            }
-        });
+                start: 'top top',
+                end: '+=300vh', // 3x viewport height for smooth scrolling
+                scrub: 1,
+                pin: true,
+                pinSpacing: true,
+                onUpdate: (self) => {
+                    // Calculate current step based on scroll progress
+                    const progress = self.progress;
+                    const stepIndex = Math.floor(progress * steps.length);
+                    const clampedIndex = Math.min(stepIndex, steps.length - 1);
 
-        // Steps animation - staggered
-        gsap.to(steps, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            scrollTrigger: {
-                trigger: section,
-                start: 'top center',
-                end: 'center center',
-                toggleActions: 'play none none reverse'
+                    if (clampedIndex !== currentStep) {
+                        setCurrentStep(clampedIndex);
+                    }
+                }
             }
         });
 
@@ -84,122 +77,38 @@ export default function About() {
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         };
-    }, []);
+    }, [currentStep, steps.length]);
 
-    // Steps data with number, title and description
-    const steps = [
-        {
-            number: '1',
-            title: 'Lorem Ipsum',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.'
-        },
-        {
-            number: '2',
-            title: 'Lorem Ipsum',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.'
-        },
-        {
-            number: '3',
-            title: 'Lorem Ipsum',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.'
-        },
-        {
-            number: '4',
-            title: 'Lorem Ipsum',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.'
-        }
-    ];
     return (
-        <section ref={sectionRef} id="how-it-works" className="mt-10 md:pt-50 pb-16 md:pb-24 bg-white w-full">
+        <section ref={sectionRef} id="how-it-works" className="min-h-screen flex items-center justify-center bg-white w-full py-16">
             <div className="w-full px-4 sm:px-6 lg:px-8">
                 {/* Section Title */}
                 <div className="text-center mb-16">
                     <h2 className="text-black text-3xl md:text-4xl font-bold mb-4">How it works</h2>
                     <p className="text-gray max-w-2xl mx-auto text-sm">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Experience our seamless delivery process designed to make your life easier with every step.
                     </p>
                 </div>
 
                 {/* Phone with Steps - Centered Layout */}
                 <div className="relative max-w-6xl mx-auto">
-                    {/* Center Phone - Absolutely positioned in the middle */}
-                    <div ref={phoneRef} className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
-                        <div className="relative">
-                            {/* Orange Circle Background */}
-                            <div className="absolute w-[150%] h-[70%] rounded-full bg-orange top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                    {/* Center Phone */}
+                    <CenterPhone screens={screens} currentScreen={currentStep} />
 
-                            {/* Phone using IPhoneMockup component */}
-                            <IPhoneMockup
-                                size="large"
-                                screens={screens}
-                                gradientFrom="from-orange"
-                                gradientTo="to-text-orange"
-                                className="w-full max-w-[240px] mx-auto relative z-10"
+                    {/* Steps Grid */}
+                    <StepsGrid steps={steps} currentStep={currentStep} />
+                </div>
+
+                {/* Progress Indicator */}
+                <div className="flex justify-center mt-8">
+                    <div className="flex space-x-2">
+                        {steps.map((_, index) => (
+                            <div
+                                key={index}
+                                className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentStep ? 'bg-orange' : 'bg-gray-300'
+                                    }`}
                             />
-                        </div>
-                    </div>
-
-                    {/* Steps Grid - Positioned around the phone */}
-                    <div className="grid grid-cols-2 gap-[20rem] h-[600px] md:h-[600px]">
-                        {/* Top Left - Step 1 */}
-                        <div ref={addToRefs} className="flex justify-end items-start pt-8 pr-8">
-                            <div className="max-w-xs text-right">
-                                <div className="flex items-center justify-end mb-2">
-                                    <h3 className="font-semibold mr-2">{steps[0].title}</h3>
-                                    <div className="w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm bg-orange text-white">
-                                        {steps[0].number}
-                                    </div>
-                                </div>
-                                <p className="text-sm text-gray-600">
-                                    {steps[0].description}
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Top Right - Step 2 */}
-                        <div ref={addToRefs} className="flex justify-start items-start pt-8">
-                            <div className="max-w-xs">
-                                <div className="flex items-center mb-2">
-                                    <div className="w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm bg-light-orange text-orange mr-2">
-                                        {steps[1].number}
-                                    </div>
-                                    <h3 className="font-semibold">{steps[1].title}</h3>
-                                </div>
-                                <p className="text-sm text-gray-600">
-                                    {steps[1].description}
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Bottom Left - Step 3 */}
-                        <div ref={addToRefs} className="flex justify-end items-end pb-8 pr-8">
-                            <div className="max-w-xs text-right">
-                                <div className="flex items-center justify-end mb-2">
-                                    <h3 className="font-semibold mr-2">{steps[2].title}</h3>
-                                    <div className="w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm bg-light-orange text-orange">
-                                        {steps[2].number}
-                                    </div>
-                                </div>
-                                <p className="text-sm text-gray-600">
-                                    {steps[2].description}
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Bottom Right - Step 4 */}
-                        <div ref={addToRefs} className="flex justify-start items-end pb-8 pl-8">
-                            <div className="max-w-xs">
-                                <div className="flex items-center mb-2">
-                                    <div className="w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm bg-light-orange text-orange mr-2">
-                                        {steps[3].number}
-                                    </div>
-                                    <h3 className="font-semibold">{steps[3].title}</h3>
-                                </div>
-                                <p className="text-sm text-gray-600">
-                                    {steps[3].description}
-                                </p>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
