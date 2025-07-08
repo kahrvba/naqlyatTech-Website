@@ -60,8 +60,7 @@ export default function AppShowcase() {
 
                         <IPhoneMockup
                             size="small"
-                            icon="📊"
-                            title="Dashboard"
+                             title="Dashboard"
                             gradientFrom="from-orange/20"
                             gradientTo="to-orange"
                             className="transform hover:scale-105 transition-transform duration-300"

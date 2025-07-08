@@ -1,7 +1,91 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useRef } from 'react';
 import IPhoneMockup from '../../ui/IPhoneMockup';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
+    const sectionRef = useRef<HTMLElement>(null);
+    const phoneRef = useRef<HTMLDivElement>(null);
+    const stepsRefs = useRef<HTMLDivElement[]>([]);
+
+    const screens = [
+        {
+            image: '/images/applecode.png',
+            title: 'Place Order',
+            subtitle: 'Select your delivery options'
+        },
+        {
+            image: '/images/applecode.png',
+            title: 'Track Delivery',
+            subtitle: 'Real-time tracking'
+        },
+        {
+            image: '/images/applecode.png',
+            title: 'Rate Service',
+            subtitle: 'Share your experience'
+        },
+        {
+            image: '/images/applecode.png',
+            title: 'View History',
+            subtitle: 'Check past deliveries'
+        }
+    ];
+
+    // Add step to refs array
+    const addToRefs = (el: HTMLDivElement | null) => {
+        if (el && !stepsRefs.current.includes(el)) {
+            stepsRefs.current.push(el);
+        }
+    };
+
+    useEffect(() => {
+        const section = sectionRef.current;
+        const phone = phoneRef.current;
+        const steps = stepsRefs.current;
+
+        if (!section || !phone || steps.length === 0) return;
+
+        // Initial states
+        gsap.set(phone, { y: 100, opacity: 0 });
+        gsap.set(steps, { opacity: 0, y: 20 });
+
+        // Phone animation
+        gsap.to(phone, {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            scrollTrigger: {
+                trigger: section,
+                start: 'top center',
+                end: 'center center',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // Steps animation - staggered
+        gsap.to(steps, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: section,
+                start: 'top center',
+                end: 'center center',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // Cleanup
+        return () => {
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        };
+    }, []);
+
     // Steps data with number, title and description
     const steps = [
         {
@@ -26,7 +110,7 @@ export default function About() {
         }
     ];
     return (
-        <section id="how-it-works" className="mt-10 md:pt-50 pb-16 md:pb-24 bg-white w-full">
+        <section ref={sectionRef} id="how-it-works" className="mt-10 md:pt-50 pb-16 md:pb-24 bg-white w-full">
             <div className="w-full px-4 sm:px-6 lg:px-8">
                 {/* Section Title */}
                 <div className="text-center mb-16">
@@ -39,7 +123,7 @@ export default function About() {
                 {/* Phone with Steps - Centered Layout */}
                 <div className="relative max-w-6xl mx-auto">
                     {/* Center Phone - Absolutely positioned in the middle */}
-                    <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+                    <div ref={phoneRef} className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
                         <div className="relative">
                             {/* Orange Circle Background */}
                             <div className="absolute w-[150%] h-[70%] rounded-full bg-orange top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
@@ -47,9 +131,7 @@ export default function About() {
                             {/* Phone using IPhoneMockup component */}
                             <IPhoneMockup
                                 size="large"
-                                icon="🚚"
-                                title="Naqlyat Tech"
-                                subtitle="How it works"
+                                screens={screens}
                                 gradientFrom="from-orange"
                                 gradientTo="to-text-orange"
                                 className="w-full max-w-[240px] mx-auto relative z-10"
@@ -60,7 +142,7 @@ export default function About() {
                     {/* Steps Grid - Positioned around the phone */}
                     <div className="grid grid-cols-2 gap-[20rem] h-[600px] md:h-[600px]">
                         {/* Top Left - Step 1 */}
-                        <div className="flex justify-end items-start pt-8 pr-8">
+                        <div ref={addToRefs} className="flex justify-end items-start pt-8 pr-8">
                             <div className="max-w-xs text-right">
                                 <div className="flex items-center justify-end mb-2">
                                     <h3 className="font-semibold mr-2">{steps[0].title}</h3>
@@ -75,7 +157,7 @@ export default function About() {
                         </div>
 
                         {/* Top Right - Step 2 */}
-                        <div className="flex justify-start items-start pt-8">
+                        <div ref={addToRefs} className="flex justify-start items-start pt-8">
                             <div className="max-w-xs">
                                 <div className="flex items-center mb-2">
                                     <div className="w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm bg-light-orange text-orange mr-2">
@@ -90,7 +172,7 @@ export default function About() {
                         </div>
 
                         {/* Bottom Left - Step 3 */}
-                        <div className="flex justify-end items-end pb-8 pr-8">
+                        <div ref={addToRefs} className="flex justify-end items-end pb-8 pr-8">
                             <div className="max-w-xs text-right">
                                 <div className="flex items-center justify-end mb-2">
                                     <h3 className="font-semibold mr-2">{steps[2].title}</h3>
@@ -105,7 +187,7 @@ export default function About() {
                         </div>
 
                         {/* Bottom Right - Step 4 */}
-                        <div className="flex justify-start items-end pb-8 pl-8">
+                        <div ref={addToRefs} className="flex justify-start items-end pb-8 pl-8">
                             <div className="max-w-xs">
                                 <div className="flex items-center mb-2">
                                     <div className="w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm bg-light-orange text-orange mr-2">

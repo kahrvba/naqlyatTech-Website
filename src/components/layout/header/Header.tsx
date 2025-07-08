@@ -1,33 +1,34 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 
 export default function Header() {
     const [visible, setVisible] = useState(true);
-    const [lastScrollY, setLastScrollY] = useState(0);
 
     useEffect(() => {
         const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-
-            if (currentScrollY <= 0) {
-                setVisible(true);
-            } else if (currentScrollY > lastScrollY) {
-                setVisible(false);
-            } else {
-                setVisible(true);
-            }
-
-            setLastScrollY(currentScrollY);
+            // Only show the header when at the very top of the page
+            setVisible(window.scrollY <= 0);
         };
 
-        window.addEventListener('scroll', handleScroll, { passive: true });
+        // Use throttled event listener to improve performance
+        let ticking = false;
+        const scrollListener = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        };
+
+        window.addEventListener('scroll', scrollListener, { passive: true });
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', scrollListener);
         };
-    }, [lastScrollY]);
+    }, []);
 
     return (
         <header
