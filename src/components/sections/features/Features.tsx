@@ -2,39 +2,43 @@ import React from 'react';
 import { LeftSidebar } from './components/LeftSidebar';
 import { FeaturesGrid } from './components/FeaturesGrid';
 import { Feature } from './types';
+import {
+    
+    Users
+} from 'lucide-react';
 
 export default function Features() {
-    // Features data
+    // Features data with Lucide icons
     const features: Feature[] = [
         {
             id: 1,
-            icon: "01",
-            title: "Lorem Ipsum",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation."
+            icon: <Users className="w-5 h-5" />,
+            title: "Fast Delivery",
+            description: "Quick and reliable delivery service to ensure your goods reach their destination on time."
         },
         {
             id: 2,
-            icon: "02",
-            title: "Lorem Ipsum",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation."
+            icon: <Users className="w-5 h-5" />,
+            title: "Real-time Tracking",
+            description: "Track your shipments in real-time with our advanced tracking system."
         },
         {
             id: 3,
-            icon: "03",
-            title: "Lorem Ipsum",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation."
+            icon: <Users className="w-5 h-5" />,
+            title: "Route Optimization",
+            description: "Smart route planning to ensure the most efficient delivery paths."
         },
         {
             id: 4,
-            icon: "04",
-            title: "Lorem Ipsum",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation."
+            icon: <Users className="w-5 h-5" />,
+            title: "Secure Transport",
+            description: "Your goods are protected with our comprehensive security measures."
         },
         {
             id: 5,
-            icon: "05",
-            title: "Lorem Ipsum",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation."
+            icon: <Users className="w-5 h-5" />,
+            title: "Instant Notifications",
+            description: "Stay updated with real-time notifications about your shipment status."
         }
     ];
 
