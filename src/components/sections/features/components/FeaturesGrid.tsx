@@ -8,9 +8,11 @@ interface FeaturesGridProps {
 export function FeaturesGrid({ features }: FeaturesGridProps) {
     return (
         <div className="lg:w-2/3">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-stretch">
                 {features.map((feature) => (
-                    <FeatureCard key={feature.id} {...feature} />
+                    <div key={feature.id} className="flex">
+                        <FeatureCard {...feature} />
+                    </div>
                 ))}
             </div>
         </div>

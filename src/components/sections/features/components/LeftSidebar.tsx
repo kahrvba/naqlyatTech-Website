@@ -17,8 +17,10 @@ export function LeftSidebar({ feature }: LeftSidebarProps) {
             </p>
 
             {/* Feature Card under description */}
-            <div className="mt-10 max-w-sm">
-                <FeatureCard {...feature} />
+            <div className="mt-10 flex">
+                <div className="flex-1">
+                    <FeatureCard {...feature} />
+                </div>
             </div>
         </div>
     );
