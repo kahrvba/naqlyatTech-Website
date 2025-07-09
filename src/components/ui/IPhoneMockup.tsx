@@ -81,9 +81,9 @@ export default function IPhoneMockup({
     return (
         <div className={`relative ${className}`}>
             {/* iPhone Frame */}
-            <div className={`bg-black rounded-[3rem] p-2 shadow-2xl border border-gray-800 ${isExtraLarge ? 'w-80 h-[600px]' :
+            <div className={`bg-black rounded-[1.8rem] p-2 shadow-2xl border border-gray-800 ${isExtraLarge ? 'w-80 h-[650px]' :
                     isLarge ? 'w-64 h-[500px]' :
-                        'w-48 h-[400px]'
+                        'w-65 h-[500px]'
                 }`}>
                 {/* iPhone Screen */}
                 <div className="bg-black rounded-[2.5rem] overflow-hidden h-full w-full relative">

@@ -11,13 +11,15 @@ export default function Home() {
   return (
     <main className="bg-white">
       <Header />
-      <Hero />
-      <About />
-      <Features />
-      <Services />
-      <AppShowcase />
-      <CTA />
-      <Footer />
+      {/* Main content sections */}
+         <Hero />
+        <About />
+        <Features />
+        <Services />
+        <AppShowcase />
+        <CTA />
+        <Footer />
+      
     </main>
   );
 }
