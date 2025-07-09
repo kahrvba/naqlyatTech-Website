@@ -1,14 +1,15 @@
 import React from 'react';
 
 export default function Services() {
-    const reasons = [
-        {
-            id: 1,
-            icon: "🚚",
-            title: "Lorem Ipsum",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.",
-            highlighted: true
-        },
+    const mainReason = {
+        id: 1,
+        icon: "🚚",
+        title: "Lorem Ipsum",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.",
+        highlighted: true
+    };
+
+    const otherReasons = [
         {
             id: 2,
             icon: "🚚",
@@ -33,33 +34,50 @@ export default function Services() {
     ];
 
     return (
-        <section id="why-us" className="py-16 md:py-24 bg-white">
+        <section id="why-us" className="py-16 md:py-24 bg-white ">
             <div className="container mx-auto px-4">
-                {/* Section Title */}
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Us ?</h2>
-                    <p className="text-gray max-w-2xl mx-auto text-sm">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                </div>
+                {/* Main Layout - Title/Description on left, Cards on right */}
+                <div className="flex flex-col lg:flex-row gap-12 items-start">
+                    {/* Left Side - Section Title and Description */}
+                    <div className="lg:w-1/3">
+                        <h2 className="text-3xl text-black md:text-4xl font-bold mb-4 ">Why Us ?</h2>
+                        <div className="w-12 h-1 bg-orange mb-6"></div>
+                        <p className="text-gray text-sm leading-relaxed">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                    </div>
 
-                {/* Reasons Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {reasons.map((reason) => (
-                        <div
-                            key={reason.id}
-                            className={`p-6 rounded-lg ${reason.highlighted
-                                    ? 'bg-orange text-white shadow-lg transform transition-transform hover:-translate-y-1'
-                                    : 'bg-white border border-light-grey bg-opacity-50 hover:border-gray transition-colors'
-                                }`}
-                        >
-                            <div className="text-2xl mb-4">{reason.icon}</div>
-                            <h3 className="text-lg font-semibold mb-2">{reason.title}</h3>
-                            <p className={`text-sm ${reason.highlighted ? 'text-white' : 'text-gray'}`}>
-                                {reason.description}
-                            </p>
+                    {/* Right Side - Cards Section */}
+                    <div className="lg:w-2/3 flex flex-col lg:flex-row gap-8">
+                        {/* Large Highlighted Card */}
+                        <div className="lg:w-1/2">
+                            <div className="bg-orange text-white p-4 rounded-lg h-full flex flex-col justify-center">
+                                <div className="text-3xl mb-2">{mainReason.icon}</div>
+                                <h3 className="text-lg font-bold mb-4">{mainReason.title}</h3>
+                                <p className="text-white text-xs leading-relaxed">
+                                    {mainReason.description}
+                                </p>
+                            </div>
                         </div>
-                    ))}
+
+                        {/* Three Smaller Cards */}
+                        <div className="lg:w-2/2 grid grid-cols-1 md:grid-cols-3 gap-4">
+                            {otherReasons.map((reason) => (
+                                <div
+                                    key={reason.id}
+                                    className="bg-white border border-gray-200 p-4 rounded-lg hover:shadow-md transition-shadow"
+                                >
+                                    <div className="text-center">
+                                        <div className="text-orange text-xl mb-3">{reason.icon}</div>
+                                        <h3 className="text-sm font-semibold mb-2">{reason.title}</h3>
+                                        <p className="text-gray text-xs leading-relaxed">
+                                            {reason.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
