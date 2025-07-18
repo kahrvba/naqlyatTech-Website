@@ -12,14 +12,14 @@ export default function Home() {
     <main className="bg-white">
       <Header />
       {/* Main content sections */}
-         <Hero />
-        <About />
-        <Features />
-        <Services />
-        <AppShowcase />
-        <CTA />
-        <Footer />
-      
+      <Hero />
+      <About />
+      <Features />
+      <Services />
+      <AppShowcase />
+      <CTA />
+      <Footer />
+
     </main>
   );
 }

@@ -32,8 +32,7 @@ export default function Header() {
 
     return (
         <header
-            className={`sticky top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out ${visible ? 'translate-y-0' : '-translate-y-full'
-                }`}
+            className={`fixed top-0 left-0 right-0 w-full z-50 transition-transform duration-300 ease-in-out ${visible ? 'translate-y-0' : '-translate-y-full'}`}
         >
             <div className={`py-4 px-4 bg-gray`}>
                 <div className="container mx-auto">

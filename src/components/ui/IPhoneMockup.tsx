@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import gsap from 'gsap';
+import { DeviceFrameset } from 'react-device-frameset';
+import 'react-device-frameset/styles/marvel-devices.min.css';
 
 interface ScreenContent {
     image: string;
@@ -19,6 +20,7 @@ interface IPhoneMockupProps {
     gradientFrom: string;
     gradientTo: string;
     className?: string;
+    showOverlay?: boolean;
 }
 
 export default function IPhoneMockup({
@@ -27,161 +29,109 @@ export default function IPhoneMockup({
     title,
     subtitle,
     screens,
-    gradientFrom,
-    gradientTo,
-    className = ''
+    className = '',
+    showOverlay = false
 }: IPhoneMockupProps) {
-    const isLarge = size === 'large';
-    const isExtraLarge = size === 'extra-large';
-    const screenRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
 
     useEffect(() => {
         if (!screens || screens.length <= 1) return;
 
-        // Set initial states
-        screenRefs.current.forEach((screen, index) => {
-            if (!screen) return;
-            gsap.set(screen, {
-                opacity: index === 0 ? 1 : 0,
-                display: index === 0 ? 'flex' : 'none'
-            });
-        });
+        const interval = setInterval(() => {
+            setCurrentScreenIndex((prev) => (prev + 1) % screens.length);
+        }, 3000); // Change screen every 3 seconds
 
-        // Create animation timeline
-        const tl = gsap.timeline({
-            repeat: -1,
-            repeatDelay: 1
-        });
-
-        screenRefs.current.forEach((screen, index) => {
-            if (!screen) return;
-            const nextIndex = (index + 1) % screens.length;
-            const nextScreen = screenRefs.current[nextIndex];
-
-            tl.to(screen, {
-                opacity: 0,
-                duration: 0.5,
-                onStart: () => {
-                    if (nextScreen) {
-                        gsap.set(nextScreen, { display: 'flex' });
-                        gsap.to(nextScreen, { opacity: 1, duration: 0.5 });
-                    }
-                },
-                onComplete: () => {
-                    gsap.set(screen, { display: 'none' });
-                }
-            });
-        });
-
-        return () => {
-            tl.kill();
-        };
+        return () => clearInterval(interval);
     }, [screens]);
 
-    return (
-        <div className={`relative ${className}`}>
-            {/* iPhone Frame */}
-            <div className={`bg-black rounded-[1.8rem] p-2 shadow-2xl border border-gray-800 ${isExtraLarge ? 'w-80 h-[650px]' :
-                    isLarge ? 'w-64 h-[500px]' :
-                        'w-65 h-[500px]'
-                }`}>
-                {/* iPhone Screen */}
-                <div className="bg-black rounded-[2.5rem] overflow-hidden h-full w-full relative">
-                    {/* Status Bar */}
-                    <div className={`bg-black ${isExtraLarge ? 'h-12 px-8' :
-                            isLarge ? 'h-10 px-6' :
-                                'h-8 px-4'
-                        } flex items-center justify-between z-10 relative`}>
-                        <div className={`text-white ${isExtraLarge ? 'text-lg' :
-                                isLarge ? 'text-sm' :
-                                    'text-xs'
-                            }`}>9:41</div>
-                        <div className="flex items-center space-x-1">
-                            <div className={`${isExtraLarge ? 'w-6' :
-                                    isLarge ? 'w-5' :
-                                        'w-4'
-                                } h-2 bg-white rounded-sm`}></div>
-                            <div className={`${isExtraLarge ? 'w-6' :
-                                    isLarge ? 'w-5' :
-                                        'w-4'
-                                } h-2 bg-white rounded-sm`}></div>
-                            <div className={`${isExtraLarge ? 'w-6' :
-                                    isLarge ? 'w-5' :
-                                        'w-4'
-                                } h-2 bg-white rounded-sm`}></div>
-                        </div>
-                    </div>
+    // Get device type based on size
+    const getDeviceType = (): "iPhone X" | "iPhone 8" | "iPhone 8 Plus" | "iPhone 5s" | "iPhone 4s" | "Galaxy Note 8" | "Nexus 5" | "Lumia 920" | "Samsung Galaxy S5" | "HTC One" | "iPad Mini" | "MacBook Pro" => {
+        switch (size) {
+            case 'extra-large':
+                return 'iPhone X';
+            case 'large':
+                return 'iPhone X';
+            case 'small':
+            default:
+                return 'iPhone X';
+        }
+    };
 
-                    {/* Screen Content */}
-                    {screens ? (
-                        // Animated screens mode
-                        screens.map((screen, index) => (
+    // Get scale based on size
+    const getScale = () => {
+        switch (size) {
+            case 'extra-large':
+                return 0.8;
+            case 'large':
+                return 0.6;
+            case 'small':
+            default:
+                return 0.45;
+        }
+    };
+
+    return (
+        <div className={`relative ${className}`} style={{ transform: `scale(${getScale()})` }}>
+            <DeviceFrameset
+                device={getDeviceType()}
+                color="black"
+                landscape={false}
+            >
+                {screens ? (
+                    // Animated screens mode
+                    <div className="relative w-full h-full">
+                        {screens.map((screen, index) => (
                             <div
                                 key={index}
-                                ref={(el) => {
-                                    if (el) screenRefs.current[index] = el;
+                                className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${index === currentScreenIndex ? 'opacity-100' : 'opacity-0'
+                                    }`}
+                                style={{
+                                    background: `linear-gradient(to bottom right, var(--orange), var(--text-orange))`
                                 }}
-                                className={`absolute inset-0 flex-1 bg-gradient-to-br ${gradientFrom} ${gradientTo} flex items-center justify-center`}
-                                style={{ top: isExtraLarge ? '3rem' : isLarge ? '2.5rem' : '2rem' }}
                             >
-                                <div className="relative w-full h-full">
-                                    <Image
-                                        src={screen.image}
-                                        alt={screen.title}
-                                        fill
-                                        className="object-cover"
-                                        priority={index === 0}
-                                    />
+                                <Image
+                                    src={screen.image}
+                                    alt={screen.title}
+                                    fill
+                                    className="object-cover"
+                                    priority={index === 0}
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                />
+                                {showOverlay && (
                                     <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
                                         <div className="text-white text-center">
-                                            <div className={`${isExtraLarge ? 'text-2xl font-bold' :
-                                                    isLarge ? 'text-lg font-bold' :
-                                                        'text-sm font-medium'
-                                                }`}>{screen.title}</div>
+                                            <div className="text-lg font-bold">{screen.title}</div>
                                             {screen.subtitle && (
-                                                <div className={`${isExtraLarge ? 'text-lg opacity-90 mt-3' :
-                                                        isLarge ? 'text-sm opacity-90 mt-2' :
-                                                            'text-xs opacity-90 mt-2'
-                                                    }`}>{screen.subtitle}</div>
+                                                <div className="text-sm opacity-90 mt-2">{screen.subtitle}</div>
                                             )}
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        ))
-                    ) : (
-                        // Static mode with icon and title
-                        <div className={`flex-1 bg-gradient-to-br ${gradientFrom} ${gradientTo} flex items-center justify-center h-full`}>
-                            <div className="text-white text-center">
-                                {icon && (
-                                    <div className={`${isExtraLarge ? 'text-6xl mb-6' :
-                                            isLarge ? 'text-4xl mb-4' :
-                                                'text-2xl mb-2'
-                                        }`}>{icon}</div>
-                                )}
-                                {title && (
-                                    <div className={`${isExtraLarge ? 'text-2xl font-bold' :
-                                            isLarge ? 'text-lg font-bold' :
-                                                'text-sm font-medium'
-                                        }`}>{title}</div>
-                                )}
-                                {subtitle && (
-                                    <div className={`${isExtraLarge ? 'text-lg opacity-90 mt-3' :
-                                            isLarge ? 'text-sm opacity-90 mt-2' :
-                                                'text-xs opacity-90 mt-2'
-                                        }`}>{subtitle}</div>
                                 )}
                             </div>
+                        ))}
+                    </div>
+                ) : (
+                    // Static mode with icon and title
+                    <div
+                        className="flex items-center justify-center h-full w-full"
+                        style={{
+                            background: `linear-gradient(to bottom right, var(--orange), var(--text-orange))`
+                        }}
+                    >
+                        <div className="text-white text-center">
+                            {icon && (
+                                <div className="text-4xl mb-4">{icon}</div>
+                            )}
+                            {title && (
+                                <div className="text-lg font-bold">{title}</div>
+                            )}
+                            {subtitle && (
+                                <div className="text-sm opacity-90 mt-2">{subtitle}</div>
+                            )}
                         </div>
-                    )}
-
-                    {/* Home Indicator */}
-                    <div className={`absolute ${isExtraLarge ? 'bottom-4 w-44' :
-                            isLarge ? 'bottom-2 w-36' :
-                                'bottom-1 w-32'
-                        } left-1/2 transform -translate-x-1/2 h-1 bg-black rounded-full opacity-30 z-10`}></div>
-                </div>
-            </div>
+                    </div>
+                )}
+            </DeviceFrameset>
         </div>
     );
 }

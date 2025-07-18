@@ -18,25 +18,25 @@ export default function About() {
             number: '1',
             title: 'Place Order',
             description: 'Select your delivery options and place your order with our easy-to-use interface.',
-            image: '/images/step1.png'
+            image: '/props/screen1.png'
         },
         {
             number: '2',
             title: 'Track Delivery',
             description: 'Monitor your shipment in real-time with our advanced tracking system.',
-            image: '/images/step2.png'
+            image: '/props/screen2.png'
         },
         {
             number: '3',
             title: 'Rate Service',
             description: 'Share your experience and help us improve our service quality.',
-            image: '/images/step3.png'
+            image: '/props/screen3.png'
         },
         {
             number: '4',
             title: 'View History',
             description: 'Access your complete delivery history and manage your account.',
-            image: '/images/step4.png'
+            image: '/props/screen4.png'
         }
     ];
 
@@ -80,7 +80,7 @@ export default function About() {
     }, [currentStep, steps.length]);
 
     return (
-        <section ref={sectionRef} id="how-it-works" className="min-h-screen flex items-center justify-center bg-white w-full py-16">
+        <section ref={sectionRef} id="how-it-works" className="min-h-screen flex items-center justify-center bg-white w-full py-16 relative ">
             <div className="w-full px-4 sm:px-6 lg:px-8">
                 {/* Section Title */}
                 <div className="text-center mb-16">
