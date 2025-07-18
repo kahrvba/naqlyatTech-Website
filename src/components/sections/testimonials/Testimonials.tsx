@@ -42,11 +42,11 @@ export default function AppShowcase() {
             {/* Divider between sections */}
             <div className="w-full h-8 bg-transparent"></div>
             {/* Center phone overlay */}
-            <div className="absolute left-1/2 top-[40%] z-20 transform -translate-x-1/2 -translate-y-1/2 w-full flex flex-row justify-center items-center gap-8">
+            <div className="absolute left-1/2 top-[60%] z-20 transform -translate-x-1/2 -translate-y-1/2 w-full flex flex-row justify-center items-center gap-8">
                 {/* Overlay Phones with minimized height for card and iPhone */}
-                <div className="bg-white rounded-2xl shadow-lg flex flex-col pt-20 items-center h-[500px] overflow-hidden">
-                    <h4 className="text-black font-semibold mt-2 text-center text-sm">Loreum ipsum Loreum</h4>
-                    <p className="text-gray font-light text-xs text-center mt-1">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                <div className="bg-white rounded-2xl shadow-lg flex flex-col pt-20 items-center h-[600px] w-[400px] overflow-hidden">
+                    <h2 className="text-black font-bold mt-2 text-center text-xl">Loreum ipsum Loreum</h2>
+                    <p className="text-gray font-light text-xs text-center pr-10 pl-10 mt-1">Loreum ipusum Loreum Loreum ipusum Loreum Loreum ipusum Loreum Loreum ipusum Loreum Loreum</p>
                     <IPhoneMockup
                         size="small"
                         icon="🚛"
@@ -57,22 +57,26 @@ export default function AppShowcase() {
                         className="transform hover:scale-105 transition-transform duration-300 h-[600px] min-h-0"
                     />
                 </div>
-                <div className="bg-white rounded-2xl shadow-lg flex flex-col items-center h-[700px] min-h-0">
-                    <IPhoneMockup
-                        size="small"
-                        icon="🚛"
-                        title="Main App"
-                        subtitle="Track & Manage"
-                        gradientFrom="from-orange"
-                        gradientTo="to-text-orange"
-                        className="transform hover:scale-105 transition-transform duration-300 h-[600px] min-h-0"
-                    />
-                    <h4 className="text-black font-semibold mt-2 text-center text-sm">Loreum ipsum Loreum</h4>
-                    <p className="text-gray font-light text-xs text-center mt-1">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                <div className="bg-white rounded-2xl shadow-lg flex flex-col items-center h-[600px] w-[400px] overflow-hidden relative pt-0 pb-6">
+                    <div className="absolute -top-60 left-1/2 transform -translate-x-1/2">
+                        <IPhoneMockup
+                            size="small"
+                            icon="🚛"
+                            title="Main App"
+                            subtitle="Track & Manage"
+                            gradientFrom="from-orange"
+                            gradientTo="to-text-orange"
+                            className="transform hover:scale-105 transition-transform duration-300 h-[600px] min-h-0"
+                        />
+                    </div>
+                    <div className="mt-auto w-full flex flex-col items-center">
+                        <h2 className="text-black font-bold mt-2 text-center text-xl">Loreum ipsum Loreum</h2>
+                        <p className="text-gray font-light text-xs text-center pr-10 pl-10 mt-1">Loreum ipusum Loreum Loreum ipusum Loreum Loreum ipusum Loreum Loreum ipusum Loreum Loreum</p>
+                    </div>
                 </div>
-                <div className="bg-white rounded-2xl shadow-lg flex flex-col pt-20 items-center h-[500px] overflow-hidden">
-                    <h4 className="text-black font-semibold mt-2 text-center text-sm">Loreum ipsum Loreum</h4>
-                    <p className="text-gray font-light text-xs text-center mt-1">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                <div className="bg-white rounded-2xl shadow-lg flex flex-col pt-20 items-center h-[600px] w-[400px] overflow-hidden">
+                    <h2 className="text-black font-bold mt-2 text-center text-xl">Loreum ipsum Loreum</h2>
+                    <p className="text-gray font-light text-xs text-center pr-10 pl-10 mt-1">Loreum ipusum Loreum Loreum ipusum Loreum Loreum ipusum Loreum Loreum ipusum Loreum Loreum</p>
                     <IPhoneMockup
                         size="small"
                         icon="🚛"
@@ -86,7 +90,7 @@ export default function AppShowcase() {
             </div>
             {/* </div> */}
             {/* Bottom: White background with phone cards */}
-            <div className="bg-white  min-h-screen w-full relative z-10">
+            <div className="bg-white  h-[60vh] w-full relative z-10">
                 {/* <div className="container mx-auto px-4 flex flex-col md:flex-row justify-center items-start gap-8">
                      <div className="bg-white rounded-2xl shadow-lg p-6 flex-1 flex flex-col items-center">
                         <h4 className="text-black font-semibold mb-2 text-center">Loreum ipsum Loreum</h4>

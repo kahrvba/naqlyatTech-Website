@@ -56,7 +56,7 @@ export default function About() {
             scrollTrigger: {
                 trigger: section,
                 start: 'top top',
-                end: '+=300vh', // 3x viewport height for smooth scrolling
+                end: '+=1200vh', // 3x viewport height for smooth scrolling
                 scrub: 1,
                 pin: true,
                 pinSpacing: true,
