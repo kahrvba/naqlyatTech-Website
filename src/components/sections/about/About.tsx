@@ -91,12 +91,13 @@ export default function About() {
                 </div>
 
                 {/* Phone with Steps - Centered Layout */}
-                <div className="relative max-w-6xl mx-auto">
-                    {/* Center Phone */}
-                    <CenterPhone screens={screens} currentScreen={currentStep} />
-
-                    {/* Steps Grid */}
+                <div className="relative max-w-6xl mx-auto h-[600px]">
+                    {/* Independent Orange Circle Background (restored original size/position) */}
+                    <div className="w-84 h-84 rounded-full bg-orange absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0"></div>
+                    {/* StepsGrid renders steps absolutely */}
                     <StepsGrid steps={steps} currentStep={currentStep} />
+                    {/* CenterPhone renders the iPhone */}
+                    <CenterPhone screens={screens} currentScreen={currentStep} />
                 </div>
 
                 {/* Progress Indicator */}
