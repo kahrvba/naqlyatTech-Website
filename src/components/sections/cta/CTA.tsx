@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import QRDownloadCard from '../../ui/QRDownloadCard';
 
 export default function CTA() {
     return (
@@ -14,7 +14,7 @@ export default function CTA() {
                                     Download Our Online<br />   Mobile App
                                 </h2>
                                 <p className="text-white mb-8 mr-20 opacity-90 text-xs max-w-lg">
-                                Loreum ipusum Loreum Loreum ipusum Loreum Loreum ipusum Loreum Loreum ipusum Loreum Loreum                                </p>
+                                    Loreum ipusum Loreum Loreum ipusum Loreum Loreum ipusum Loreum Loreum ipusum Loreum Loreum                                </p>
 
                                 {/* Stats */}
                                 <div className="flex space-x-10 mb-5 mt-15">
@@ -33,21 +33,21 @@ export default function CTA() {
                                 </div>
                             </div>
 
-                            {/* QR Codes */}
-                            <div className="md:w-1/2 flex space-x-4">
-                                <Image
-                                    src="/images/applecode.png"
-                                    alt="iOS App Store QR Code"
-                                    width={150}
-                                    height={150}
-                                    className=" w-full h-full object-fit"
+                            {/* QR Download Cards */}
+                            <div className="md:w-1/2 flex justify-end space-x-4">
+                                <QRDownloadCard
+                                    platform="iOS"
+                                    buttonText="Download now"
+                                    qrLink="https://apps.apple.com/app/idXXXXXXXXX"
+                                    iconImage="/images/apple.png"
+                                    iconAlt="Apple logo"
                                 />
-                                <Image
-                                    src="/images/playcode.png"
-                                    alt="Android Play Store QR Code"
-                                    width={150}
-                                    height={150}
-                                    className=" w-full h-full mt-10 object-fit"
+                                <QRDownloadCard
+                                    platform="Android"
+                                    buttonText="Download now"
+                                    qrLink="https://play.google.com/store/apps/details?id=XXXXXXXXX"
+                                    iconImage="/images/playstore.png"
+                                    iconAlt="Play Store logo"
                                 />
                             </div>
                         </div>
