@@ -25,7 +25,7 @@ export function CenterPhone({ screens, currentScreen }: CenterPhoneProps) {
     }, []);
 
     return (
-        <div ref={phoneRef} className="absolute left-[45%] top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+        <div ref={phoneRef} className="absolute left-[47%] top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
             <div className="relative">
                 {/* Phone using IPhoneMockup component */}
                 <IPhoneMockup
