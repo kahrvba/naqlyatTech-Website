@@ -68,15 +68,15 @@ export function StepItem({ step, position, isActive }: StepItemProps) {
                     {position.includes('left') && (
                         <h3 className="font-semibold mr-2">{step.title}</h3>
                     )}
-                    <div className={`w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm ${isActive ? 'bg-orange text-white' : 'bg-light-orange text-orange'
+                    <div className={`w-8 h-8 flex items-center justify-center rounded-full font-bold text-lg ${isActive ? 'bg-orange text-white' : 'bg-light-orange text-orange'
                         } ${getNumberClasses()}`}>
                         {step.number}
                     </div>
                     {position.includes('right') && (
-                        <h3 className="font-semibold">{step.title}</h3>
+                        <h3 className="font-semibold text-lg">{step.title}</h3>
                     )}
                 </div>
-                <p className="text-sm text-gray-600">
+                <p className="text-lg text-gray-600">
                     {step.description}
                 </p>
             </div>
