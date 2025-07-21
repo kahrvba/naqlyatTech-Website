@@ -18,7 +18,7 @@ export function StepsGrid({ steps, currentStep }: StepsGridProps) {
     ];
 
     return (
-        <div className="grid grid-cols-2 gap-[30rem] h-[600px] md:h-[600px]">
+        <div className="grid grid-cols-2 gap-[25rem] h-[500px] md:h-[400px]">
             {steps.map((step, index) => (
                 <StepItem
                     key={step.number}

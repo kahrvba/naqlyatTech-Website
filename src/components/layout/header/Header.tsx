@@ -1,6 +1,8 @@
+
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export default function Header() {
     const [visible, setVisible] = useState(true);
@@ -34,12 +36,13 @@ export default function Header() {
         <header
             className={`fixed top-0 left-0 right-0 w-full z-50 transition-transform duration-300 ease-in-out ${visible ? 'translate-y-0' : '-translate-y-full'}`}
         >
-            <div className={`py-4 px-4 bg-gray`}>
+            <div className={`py-6 px-2 bg-gray`}>
                 <div className="container mx-auto">
                     <div className="flex justify-between items-center">
                         <div className="flex items-center">
-                            <span className="text-xl font-bold text-white">Logo.</span>
-                        </div>
+                                 {/* Use next/image for logo */}
+                                <Image src="/images/logo.svg" alt="Logo" width={70} height={70} />
+                         </div>
 
                         <nav className="hidden md:block">
                             <ul className="flex space-x-8">

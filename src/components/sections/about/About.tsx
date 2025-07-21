@@ -91,9 +91,9 @@ export default function About() {
                 </div>
 
                 {/* Phone with Steps - Centered Layout */}
-                <div className="relative max-w-6xl mx-auto h-[600px]">
+                <div className="relative max-w-6xl mx-auto h-[650px]">
                     {/* Independent Orange Circle Background (restored original size/position) */}
-                    <div className="w-120 h-120 rounded-full bg-orange absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0"></div>
+                    <div className="w-100 h-100 rounded-full bg-orange absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0"></div>
                     {/* StepsGrid renders steps absolutely */}
                     <StepsGrid steps={steps} currentStep={currentStep} />
                     {/* CenterPhone renders the iPhone */}

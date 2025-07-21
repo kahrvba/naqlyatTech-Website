@@ -19,7 +19,7 @@ export default function Hero() {
             </div>
 
             {/* Floating iPhone Overlay - Positioned Absolutely */}
-            <div className='min-h-screen w-full'>
+            <div className='h-[80vh] w-full '>
                 <div className="absolute left-1/2 transform -translate-x-1/2 top-[60%] z-30 w-full max-w-6xl px-10">
                     <div className="flex justify-between items-end">
                         {/* Left iPhone */}
