@@ -45,7 +45,7 @@ export default function CTA() {
                                 <QRDownloadCard
                                     platform="Android"
                                     buttonText="Download now"
-                                    qrLink="https://play.google.com/store/apps/details?id=XXXXXXXXX"
+                                    qrLink="https://play.google.com/store/apps/details"
                                     iconImage="/images/playstore.png"
                                     iconAlt="Play Store logo"
                                 />

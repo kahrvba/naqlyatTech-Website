@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
 import QRCode from 'react-qr-code';
@@ -31,7 +32,7 @@ export default function QRDownloadCard({
                 </div>
             </div>
             {/* Download Button */}
-            <button className="justify-start items-center py-2 px-4 rounded-full bg-orange text-white font-semibold text-sm mb-4">{buttonText}</button>
+            <button className="justify-start items-center py-2 px-4 rounded-full bg-orange text-white font-semibold text-sm mb-4 cursor-pointer" onClick={() => window.open(qrLink, '_blank')}>{buttonText}</button>
             {/* QR Code */}
             <div className="flex flex-col items-center justify-center ">
                 <div className="bg-white p-1 rounded-lg mb-2">
