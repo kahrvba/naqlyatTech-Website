@@ -19,8 +19,8 @@ export default function Hero() {
             </div>
 
             {/* Floating iPhone Overlay - Positioned Absolutely */}
-            <div className='h-[50vh] sm:h-[60vh] md:h-[80vh] w-full'>
-                <div className="absolute left-1/2 transform -translate-x-1/2 top-[30%] sm:top-[60%] z-30 w-full max-w-6xl px-4 sm:px-10">
+            <div className='h-[65vh] sm:h-[70vh] md:h-[80vh] w-full'>
+                <div className="absolute left-1/2 transform -translate-x-1/2 top-[20%] sm:top-[35%] md:top-[60%] z-30 w-full max-w-6xl px-4 sm:px-10">
                     <div className="flex justify-center md:justify-between items-end">
                         {/* Left iPhone */}
                         <IPhoneMockup
@@ -40,7 +40,7 @@ export default function Hero() {
                             subtitle="Transportation Solution"
                             gradientFrom="from-orange"
                             gradientTo="to-text-orange"
-                            className="w-full sm:w-2/3 md:w-1/3 z-20"
+                            className="w-full max-w-[320px] sm:max-w-[400px] md:w-1/3 z-20"
                         />
 
                         {/* Right iPhone */}
@@ -53,8 +53,8 @@ export default function Hero() {
                             className="hidden md:block w-1/3 mb-8 z-10"
                         />
                     </div>
-                    {/* App Store Buttons - now directly after phones */}
-                    <div className="flex justify-center items-end mt-6 md:mt-12 space-x-4">
+                    {/* App Store Buttons - adjusted for better mobile visibility */}
+                    <div className="flex justify-center items-center mt-5 sm:mt-6 md:mt-5 space-x-4 relative z-30">
                         <AppStoreButton type="appstore" />
                         <AppStoreButton type="playstore" />
                     </div>
