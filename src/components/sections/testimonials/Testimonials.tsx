@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function AppShowcase() {
     return (
-        <section id="app-showcase" className="w-full relative">
+        <section id="app-showcase" className="hidden md:block w-full relative">
             {/* Top: Dark background with text/buttons */}
             <div className="bg-secondary-black w-full min-h-[75vh] pt-8 md:pt-12 pb-10">
                 <div className="container mx-auto px-4 md:px-5 py-6 md:py-10 flex flex-col md:flex-row items-start justify-between">
