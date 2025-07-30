@@ -34,13 +34,13 @@ export default function Services() {
     ];
 
     return (
-        <section id="why-us" className="py-16 md:py-24 bg-white ">
+        <section id="why-us" className="py-12 md:py-24 bg-white">
             <div className="container mx-auto px-4">
                 {/* Main Layout - Title/Description on left, Cards on right */}
-                <div className="flex flex-col lg:flex-row gap-12 items-start">
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
                     {/* Left Side - Section Title and Description */}
-                    <div className="lg:w-1/3">
-                        <h2 className="text-3xl text-black md:text-4xl font-bold mb-4 ">Why Us ?</h2>
+                    <div className="w-full lg:w-1/3 mb-8 lg:mb-0">
+                        <h2 className="text-2xl sm:text-3xl text-black md:text-4xl font-bold mb-4">Why Us?</h2>
                         <div className="w-12 h-1 bg-orange mb-6"></div>
                         <p className="text-gray text-sm leading-relaxed">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -48,9 +48,9 @@ export default function Services() {
                     </div>
 
                     {/* Right Side - Cards Section */}
-                    <div className="lg:w-2/3 flex flex-col lg:flex-row gap-8">
+                    <div className="w-full lg:w-2/3 flex flex-col lg:flex-row gap-6 lg:gap-8">
                         {/* Large Highlighted Card */}
-                        <div className="lg:w-1/2">
+                        <div className="w-full lg:w-1/2 mb-6 lg:mb-0">
                             <div className="bg-orange text-white p-4 rounded-lg h-full flex flex-col justify-center">
                                 <div className="text-3xl mb-2">{mainReason.icon}</div>
                                 <h3 className="text-lg font-bold mb-4">{mainReason.title}</h3>
@@ -61,7 +61,7 @@ export default function Services() {
                         </div>
 
                         {/* Three Smaller Cards */}
-                        <div className="lg:w-2/2 grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-3 gap-4">
                             {otherReasons.map((reason) => (
                                 <div
                                     key={reason.id}

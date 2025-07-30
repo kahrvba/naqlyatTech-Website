@@ -33,6 +33,18 @@ export default function IPhoneMockup({
     showOverlay = false
 }: IPhoneMockupProps) {
     const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        // Check if we're on mobile
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     useEffect(() => {
         if (!screens || screens.length <= 1) return;
@@ -57,16 +69,28 @@ export default function IPhoneMockup({
         }
     };
 
-    // Get scale based on size
+    // Get scale based on size and device
     const getScale = () => {
-        switch (size) {
-            case 'extra-large':
-                return 0.8;
-            case 'large':
-                return 0.6;
-            case 'small':
-            default:
-                return 0.45;
+        if (isMobile) {
+            switch (size) {
+                case 'extra-large':
+                    return 0.4;
+                case 'large':
+                    return 0.35;
+                case 'small':
+                default:
+                    return 0.3;
+            }
+        } else {
+            switch (size) {
+                case 'extra-large':
+                    return 0.8;
+                case 'large':
+                    return 0.6;
+                case 'small':
+                default:
+                    return 0.45;
+            }
         }
     };
 

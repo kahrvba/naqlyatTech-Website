@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -44,9 +43,9 @@ export default function Header() {
         <header
             className={`fixed top-0 left-0 right-0 w-full z-50 transition-transform duration-300 ease-in-out ${visible ? 'translate-y-0' : '-translate-y-full'}`}
         >
-            <div className={`py-4 px-2 bg-gray md:py-6`}>
+            <div className={`py-4 px-4 bg-gray md:py-6`}>
                 <div className="container mx-auto">
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center ">
                         <div className="flex items-center">
                             <Image src="/images/logo.svg" alt="Logo" width={60} height={60} className="w-12 h-12 md:w-[70px] md:h-[70px]" />
                         </div>
@@ -80,26 +79,27 @@ export default function Header() {
                             aria-label="Open menu"
                             onClick={() => setMenuOpen((open) => !open)}
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-7 h-7">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-                            </svg>
+                            {menuOpen ? (
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-7 h-7">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            ) : (
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-7 h-7">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                                </svg>
+                            )}
                         </button>
                     </div>
                 </div>
 
-                {/* Mobile menu overlay */}
-                <div
-                    className={`fixed inset-0 bg-black bg-opacity-60 z-40 transition-opacity duration-300 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-                    onClick={() => setMenuOpen(false)}
-                ></div>
-                {/* Mobile menu */}
+                {/* Full screen mobile menu */}
                 <nav
-                    className={`fixed top-0 right-0 w-4/5 max-w-xs h-full bg-gray z-50 shadow-lg transform transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden`}
+                    className={`fixed inset-0 w-full h-screen bg-gray z-50 transition-all duration-300 ${menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'} md:hidden`}
                     aria-label="Mobile menu"
                 >
-                    <div className="flex flex-col h-full p-6">
-                        <div className="flex items-center justify-between mb-8">
-                            <Image src="/images/logo.svg" alt="Logo" width={50} height={50} className="w-10 h-10" />
+                    <div className="flex flex-col h-full p-6 relative">
+                        <div className="flex items-center justify-between mb-8 pt-2">
+                            <Image src="/images/logo.svg" alt="Logo" width={60} height={60} className="w-12 h-12" />
                             <button
                                 className="text-white focus:outline-none"
                                 aria-label="Close menu"
@@ -110,12 +110,12 @@ export default function Header() {
                                 </svg>
                             </button>
                         </div>
-                        <ul className="flex flex-col space-y-6">
+                        <ul className="flex flex-col space-y-6 items-center justify-center flex-grow">
                             {['Home', 'Features', 'Why Us', 'How It works'].map((item) => (
-                                <li key={item}>
+                                <li key={item} className="text-center">
                                     <a
                                         href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                                        className="text-white hover:text-orange transition-colors font-medium text-lg"
+                                        className="text-white hover:text-orange transition-colors font-medium text-xl"
                                         onClick={() => setMenuOpen(false)}
                                     >
                                         {item}
