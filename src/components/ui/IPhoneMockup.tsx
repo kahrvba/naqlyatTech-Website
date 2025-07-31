@@ -14,6 +14,7 @@ interface ScreenContent {
 interface IPhoneMockupProps {
     size?: 'small' | 'large' | 'extra-large';
     icon?: string;
+    iconImage?: string;
     title?: string;
     subtitle?: string;
     screens?: ScreenContent[];
@@ -26,6 +27,7 @@ interface IPhoneMockupProps {
 export default function IPhoneMockup({
     size = 'small',
     icon,
+    iconImage,
     title,
     subtitle,
     screens,
@@ -137,22 +139,35 @@ export default function IPhoneMockup({
                 ) : (
                     // Static mode with icon and title
                     <div
-                        className="flex items-center justify-center h-full w-full"
+                        className="relative h-full w-full"
                         style={{
                             background: `linear-gradient(to bottom right, var(--orange), var(--text-orange))`
                         }}
                     >
-                        <div className="text-white text-center">
-                            {icon && (
-                                <div className="text-4xl mb-4">{icon}</div>
-                            )}
-                            {title && (
-                                <div className="text-lg font-bold">{title}</div>
-                            )}
-                            {subtitle && (
-                                <div className="text-sm opacity-90 mt-2">{subtitle}</div>
-                            )}
-                        </div>
+                        {iconImage ? (
+                            <Image
+                                src={iconImage}
+                                alt={title || 'App icon'}
+                                fill
+                                className="object-cover"
+                                priority
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                        ) : (
+                            <div className="flex items-center justify-center h-full w-full">
+                                <div className="text-white text-center">
+                                    {icon && (
+                                        <div className="text-4xl mb-4">{icon}</div>
+                                    )}
+                                    {title && (
+                                        <div className="text-lg font-bold">{title}</div>
+                                    )}
+                                    {subtitle && (
+                                        <div className="text-sm opacity-90 mt-2">{subtitle}</div>
+                                    )}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 )}
             </DeviceFrameset>

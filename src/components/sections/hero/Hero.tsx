@@ -25,7 +25,7 @@ export default function Hero() {
                         {/* Left iPhone */}
                         <IPhoneMockup
                             size="large"
-                            icon="🎯"
+                            iconImage="/props/hero2.png"
                             title="Features"
                             gradientFrom="from-text-orange"
                             gradientTo="to-orange"
@@ -35,7 +35,7 @@ export default function Hero() {
                         {/* Center iPhone (larger) */}
                         <IPhoneMockup
                             size="extra-large"
-                            icon="🚚"
+                            iconImage="/props/hero1.png"
                             title="Naqlyat Tech"
                             subtitle="Transportation Solution"
                             gradientFrom="from-orange"
@@ -46,7 +46,7 @@ export default function Hero() {
                         {/* Right iPhone */}
                         <IPhoneMockup
                             size="large"
-                            icon="🎯"
+                            iconImage="/props/hero3.png"
                             title="Features"
                             gradientFrom="from-text-orange"
                             gradientTo="to-orange"
