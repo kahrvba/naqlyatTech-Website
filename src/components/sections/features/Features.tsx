@@ -1,7 +1,6 @@
 import React from 'react';
 import { Feature } from './types';
 import {
-
     Users
 } from 'lucide-react';
 
@@ -41,18 +40,16 @@ export default function Features() {
     ];
 
     return (
-        <section id="features" className="py-16 m-15 rounded-2xl md:py-24 bg-[#F9F9F9] bg-opacity-10">
+        <section id="features" className="py-12 md:py-16 lg:py-24 mx-4 md:m-15 rounded-2xl bg-[#F9F9F9] bg-opacity-10">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col lg:flex-row gap-4 lg:gap-2">
                     {/* Left Sidebar - Title and Description Only */}
-                    <div className="lg:w-1/3">
-                        <h2 className="text-3xl text-black md:text-4xl font-bold mb-6">Our Features</h2>
+                    <div className="lg:w-1/3 mb-8 lg:mb-0">
+                        <h2 className="text-2xl sm:text-3xl text-black md:text-4xl font-bold mb-6">Our Features</h2>
                         <div className="w-35 h-1 bg-orange mb-6"></div>
-                        <p className="text-gray text-sm leading-relaxed pr-14">
+                        <p className="text-gray text-sm leading-relaxed pr-0 md:pr-14">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
                         </p>
-
-                       
                     </div>
 
                     {/* Features Grid - Remaining Cards */}
@@ -60,7 +57,7 @@ export default function Features() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                             {features.slice(0, 2).map((feature) => (
                                 <div key={feature.id} className="flex">
-                                    <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow h-full min-h-[250px] flex flex-col w-full">
+                                    <div className="bg-white p-6 md:p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow h-full min-h-[200px] md:min-h-[250px] flex flex-col w-full">
                                         <div className="mb-6">
                                             <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-light-orange bg-opacity-30">
                                                 <div className="text-orange">
@@ -68,7 +65,7 @@ export default function Features() {
                                                 </div>
                                             </span>
                                         </div>
-                                        <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
+                                        <h3 className="text-lg md:text-xl font-semibold mb-4">{feature.title}</h3>
                                         <p className="text-gray text-sm flex-1 leading-relaxed">
                                             {feature.description}
                                         </p>
@@ -76,13 +73,11 @@ export default function Features() {
                                 </div>
                             ))}
                         </div>
-
                     </div>
-
                 </div>
-                <div className="flex gap-5 mt-8">
+                <div className="flex flex-col md:flex-row gap-5 mt-6 md:mt-8">
                     {features.slice(2, 5).map((feature) => (
-                        <div key={feature.id} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow h-full min-h-[250px] flex flex-col w-1/3">
+                        <div key={feature.id} className="bg-white p-6 md:p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow h-full min-h-[200px] md:min-h-[250px] flex flex-col w-full md:w-1/3 mb-5 md:mb-0">
                             <div className="mb-6">
                                 <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-light-orange bg-opacity-30">
                                     <div className="text-orange">
@@ -90,7 +85,7 @@ export default function Features() {
                                     </div>
                                 </span>
                             </div>
-                            <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
+                            <h3 className="text-lg md:text-xl font-semibold mb-4">{feature.title}</h3>
                             <p className="text-gray text-sm flex-1 leading-relaxed">
                                 {feature.description}
                             </p>

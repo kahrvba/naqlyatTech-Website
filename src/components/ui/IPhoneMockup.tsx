@@ -14,6 +14,7 @@ interface ScreenContent {
 interface IPhoneMockupProps {
     size?: 'small' | 'large' | 'extra-large';
     icon?: string;
+    iconImage?: string;
     title?: string;
     subtitle?: string;
     screens?: ScreenContent[];
@@ -26,6 +27,7 @@ interface IPhoneMockupProps {
 export default function IPhoneMockup({
     size = 'small',
     icon,
+    iconImage,
     title,
     subtitle,
     screens,
@@ -33,6 +35,18 @@ export default function IPhoneMockup({
     showOverlay = false
 }: IPhoneMockupProps) {
     const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        // Check if we're on mobile
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     useEffect(() => {
         if (!screens || screens.length <= 1) return;
@@ -57,16 +71,28 @@ export default function IPhoneMockup({
         }
     };
 
-    // Get scale based on size
+    // Get scale based on size and device
     const getScale = () => {
-        switch (size) {
-            case 'extra-large':
-                return 0.8;
-            case 'large':
-                return 0.6;
-            case 'small':
-            default:
-                return 0.45;
+        if (isMobile) {
+            switch (size) {
+                case 'extra-large':
+                    return 0.4;
+                case 'large':
+                    return 0.35;
+                case 'small':
+                default:
+                    return 0.3;
+            }
+        } else {
+            switch (size) {
+                case 'extra-large':
+                    return 0.8;
+                case 'large':
+                    return 0.6;
+                case 'small':
+                default:
+                    return 0.45;
+            }
         }
     };
 
@@ -113,22 +139,35 @@ export default function IPhoneMockup({
                 ) : (
                     // Static mode with icon and title
                     <div
-                        className="flex items-center justify-center h-full w-full"
+                        className="relative h-full w-full"
                         style={{
                             background: `linear-gradient(to bottom right, var(--orange), var(--text-orange))`
                         }}
                     >
-                        <div className="text-white text-center">
-                            {icon && (
-                                <div className="text-4xl mb-4">{icon}</div>
-                            )}
-                            {title && (
-                                <div className="text-lg font-bold">{title}</div>
-                            )}
-                            {subtitle && (
-                                <div className="text-sm opacity-90 mt-2">{subtitle}</div>
-                            )}
-                        </div>
+                        {iconImage ? (
+                            <Image
+                                src={iconImage}
+                                alt={title || 'App icon'}
+                                fill
+                                className="object-cover"
+                                priority
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                        ) : (
+                            <div className="flex items-center justify-center h-full w-full">
+                                <div className="text-white text-center">
+                                    {icon && (
+                                        <div className="text-4xl mb-4">{icon}</div>
+                                    )}
+                                    {title && (
+                                        <div className="text-lg font-bold">{title}</div>
+                                    )}
+                                    {subtitle && (
+                                        <div className="text-sm opacity-90 mt-2">{subtitle}</div>
+                                    )}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 )}
             </DeviceFrameset>
