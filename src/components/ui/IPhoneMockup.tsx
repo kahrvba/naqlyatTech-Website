@@ -76,7 +76,7 @@ export default function IPhoneMockup({
         if (isMobile) {
             switch (size) {
                 case 'extra-large':
-                    return 0.4;
+                    return 0.6;
                 case 'large':
                     return 0.35;
                 case 'small':
